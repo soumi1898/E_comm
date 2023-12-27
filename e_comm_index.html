@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <h1 id="header-title">Products</h1>
+            <!-- <div class="col-md-6 align-self-center">
+                <input type="text" class="form-control" id="filter" placeholder="Search items..">
+            </div> -->
+        </div>
+    </header>
+    <div class="container">
+        <h2>Add your product</h2>
+            <form id="addForm" class="form-inline mb-3">
+                <label name="product_name">Product Name</label><br>
+                <input type="text" class="for-control mr-2" id="product_name"><br>
+
+                <label name="price">Price</label><br>
+                <input type="number" class="for-control mr-2" id="price"><br>
+
+                <label name="category">Category</label><br>
+                <select id="category" name="category" class="for-control mr-2">
+                    <option value="Electronics">Electronics</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="SkinCare">SkinCare</option>
+                </select><br><br>
+                <input type="submit">
+            </form>
+    </div>
+    <div class="display">
+        <h2>Your Cart Items:</h2>
+        <h3>Electronics</h3>
+        <ul id="items_electronic">
+            <!-- <li></li> -->
+        </ul>
+        <h3>Clothing</h3>
+        <ul id="items_clothing">
+            <!-- <li></li> -->
+        </ul>
+        <h3>SkinCare</h3>
+        <ul id="items_skincare">
+            <!-- <li></li> -->
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="e_comm_index.js" type="text/javascript">
+       
+    </script>
+</body>
