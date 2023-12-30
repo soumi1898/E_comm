@@ -6,16 +6,12 @@ var del=document.querySelectorAll('#deleteBtn')
 var countID=0;
 var flag=null;
 form.addEventListener('submit',addItem);
-//itemsList.addEventListener('click',editPerson);
 
 itemsListClothing.addEventListener('click',removeItem);
 itemsListElectronics.addEventListener('click',removeItem);
 itemsListSkincare.addEventListener('click',removeItem);
 
-
-	//@CrossOrigin(origins = "http://localhost:8080")
-
-function addItem(e)
+async function addItem(e)
 {
     e.preventDefault();
 
@@ -28,31 +24,37 @@ function addItem(e)
 
     //STORE IN CLOUD:
     var id;
-    axios.post('https://crudcrud.com/api/4a79b623c9924a0c8e4b47b3c461d5fb/ProductDetails',obj)
-        .then((res)=>{
+    try{
+   let res= await axios.post('https://crudcrud.com/api/79fc7e3fd0014138acc6cd99cf618d2e/ProductDetails',obj);
+        //.then((res)=>{
             console.log(res);
              console.log(res.data._id);
              id=res.data._id;
-             showOutput(obj,id);
+             showOutput(res.data);}
+             catch{
+
+             }
         
-    })
-        .catch(err=>console.log(err));
+    //})
+    //    .catch(err=>console.log(err));
 
          
     
 }
 
-function showOutput(res,id) {
+function showOutput(res) {
 
 //create new person
     var li=document.createElement('li');
     console.log(res);
-    console.log(id);
+    console.log(res._id);
 
     console.log(res.category);
 //add class
     li.className='list-group-item';
-    li.id=id;
+    li.id=res._id;
+    console.log(li.id);
+
 
 //add text node
     li.textContent=res.product_name;
@@ -93,11 +95,11 @@ function showOutput(res,id) {
             console.log(li.id);
             axios
               .delete(
-               `https://crudcrud.com/api/4a79b623c9924a0c8e4b47b3c461d5fb/ProductDetails/${li.id}`
+               `https://crudcrud.com/api/79fc7e3fd0014138acc6cd99cf618d2e/ProductDetails/${li.id}`
               )
               .then((res) => {
                 console.log("object deleted");
-                //ele.remove();
+                li.remove();
               })
               .catch((err) => console.log(err));
         }
@@ -110,7 +112,7 @@ window.addEventListener("load", () => {
     //flag=false;
     axios
       .get(
-        "https://crudcrud.com/api/4a79b623c9924a0c8e4b47b3c461d5fb/ProductDetails"
+        "https://crudcrud.com/api/79fc7e3fd0014138acc6cd99cf618d2e/ProductDetails"
       )
       .then((res) => {
         const data = res.data;
